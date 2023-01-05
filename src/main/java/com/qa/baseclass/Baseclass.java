@@ -44,7 +44,7 @@ public class Baseclass {
 
 		String browserName = prop.getProperty("browser");
 		if (browserName.equals("chrome")) {
-
+		
 		//	System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\chromedriver.exe");
 		    WebDriverManager.chromedriver().setup();      //Instead of .setup use .create is used to avoid the next line and driver = WebDriverManager.chromedriver().create();
 			driver = new ChromeDriver();

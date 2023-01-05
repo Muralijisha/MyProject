@@ -1,0 +1,106 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>MyAutomation</groupId>
+  <artifactId>MyAutomation</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+
+<properties>
+         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+         <maven.compiler.target>1.8</maven.compiler.target>
+         <maven.compiler.source>1.8</maven.compiler.source>
+         <aspectj.version>1.9.7</aspectj.version>
+	<maven-surefire-plugin-version>3.0.0-M5</maven-surefire-plugin-version>
+         
+  </properties>
+  
+  <dependencies>
+ 
+
+<!-- https://mvnrepository.com/artifact/org.webjars.npm/webdriver-manager -->
+
+
+<!-- https://mvnrepository.com/artifact/org.testng/testng -->
+<dependency>
+  <groupId>org.testng</groupId>
+  <artifactId>testng</artifactId>
+  <version>7.6.1</version>
+  <scope>test</scope>
+</dependency>
+
+<!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
+<dependency>
+    <groupId>io.github.bonigarcia</groupId>
+    <artifactId>webdrivermanager</artifactId>
+    <version>5.3.1</version>
+</dependency>
+
+
+<dependency>
+			<groupId>io.qameta.allure</groupId>
+			<artifactId>allure-testng</artifactId>
+			<version>2.18.1</version>
+		</dependency>
+		
+		
+
+
+
+
+<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+<dependency>
+    <groupId>org.seleniumhq.selenium</groupId>
+    <artifactId>selenium-java</artifactId>
+    <version>4.7.2</version>
+</dependency>
+  
+  </dependencies>
+  
+  <build>
+  <plugins>
+  <plugin>
+      <!-- Build an executable JAR -->
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-jar-plugin</artifactId>
+      <version>3.1.0</version>
+      <configuration>
+        <archive>
+          <manifest>
+            <addClasspath>true</addClasspath>
+            <classpathPrefix>lib/</classpathPrefix>
+            <mainClass>com.runner.scheduler.RunnerClass</mainClass>
+          </manifest>
+          <manifest>
+            <addClasspath>true</addClasspath>
+            <classpathPrefix>lib/</classpathPrefix>
+            <mainClass>com.runner.scheduler.DialerModeRunner</mainClass>
+          </manifest>
+        </archive>
+      </configuration>
+    </plugin>
+    
+    
+  
+     <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>${maven-surefire-plugin-version}</version>
+        <configuration>
+            <argLine>
+                -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/1.9.9.1/aspectjweaver-1.9.9.1.jar"
+             </argLine>
+         </configuration>
+              <dependencies>
+                  <dependency>
+                      <groupId>org.aspectj</groupId>
+                      <artifactId>aspectjweaver</artifactId>
+                      <version>${aspectj.version}</version>
+                  </dependency>
+              </dependencies>
+       </plugin>
+       
+       
+ 		</plugins>
+  </build>
+  
+  
+</project>
